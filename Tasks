@@ -14,3 +14,28 @@ def stringify(node):
     result.append("None")
     return " -> ".join(result)
 # print(stringify(Node(1, Node(2, Node(3)))))
+
+
+def linked_list_from_string(s):
+    if s.strip() in {"null", "NULL", "nil", "nullptr", "null()"}:
+        return None
+    nodes = s.split(" -> ")
+    nodes.pop()
+    head = None
+    for value in reversed(nodes):
+        head = Node(int(value), head)
+    return head
+    
+def get_nth(node, index):
+    count = 0
+    current_node = node
+    while current_node is not None:
+        if count == index:
+            return current_node.data
+        count += 1
+        current_node = current_node.next
+        
+# head = Node(1, Node(2, Node(3)))
+# print(get_nth(head, 2))
+
+
