@@ -98,3 +98,33 @@ def sorted_insert(head, data):
 
     return head
 
+
+#HARD
+
+#swap node
+def swap_pairs(head):
+    if not head or not head.next:
+        new_head = head.next
+        head.next = swap_pairs(new_head.next)
+        new_head.next = head
+    
+    return new_head
+
+def print_list(head):
+    while head:
+        print(head.data, end=" -> " if head.next else " -> null")
+        head = head.next
+    print()
+
+
+
+
+# class Node:
+#     def __init__(self, data=None, next=None):
+#         self.data = data
+#         self.next = next
+
+# class Context:
+#     def __init__(self, first=None, second=None):
+#         self.first = first 
+#         self.second = second  
