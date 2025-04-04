@@ -31,10 +31,10 @@ def get_nth(node, index):
     current_node = node
     while current_node is not None:
         if count == index:
-            return current_node.data
+            return current_node
         count += 1
         current_node = current_node.next
-        
+    raise IndexError()
 # head = Node(1, Node(2, Node(3)))
 # print(get_nth(head, 2))
 
@@ -104,9 +104,10 @@ def sorted_insert(head, data):
 #swap node
 def swap_pairs(head):
     if not head or not head.next:
-        new_head = head.next
-        head.next = swap_pairs(new_head.next)
-        new_head.next = head
+        return head
+    new_head = head.next
+    head.next = swap_pairs(new_head.next)
+    new_head.next = head
     
     return new_head
 
